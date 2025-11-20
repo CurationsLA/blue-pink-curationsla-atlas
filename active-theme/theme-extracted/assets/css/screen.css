@@ -1,0 +1,1914 @@
+/* CURATIONSLA Theme - Legendary LA Brutalist Design */
+
+/* ========================================
+   LEGENDARY LA COLOR PALETTE
+   Old Beehiiv + Current + LA Vibes
+   ======================================== */
+:root {
+  /* Core LA Colors - Current */
+  --lime: #EBF99A;              /* Signature lime green */
+  --lime-strong: #EBF99A;
+  --lime-line: #EBF99A;
+  --purple: #8B5CF6;            /* Current purple */
+
+  /* RADICAL 3-COLOR SYSTEM - Hot Pink + Purple + Lime */
+  --hot-pink: #ff79cb;          /* PRIMARY: Hot pink - main accent */
+  --sky-blue: #ff79cb;          /* DEPRECATED: Replaced with hot pink */
+  --sunshine-yellow: #8B5CF6;   /* DEPRECATED: Replaced with purple */
+
+  /* Legacy Support */
+  --pink: #ff79cb;              /* Alias for hot-pink */
+
+  /* Text & Background */
+  --text: #000000;              /* Pure black for maximum contrast */
+  --text-soft: #444;
+  --bg: #F8F8F8;                /* Seasalt - Let the colors POP! */
+
+  /* Typography */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Brutalist Settings */
+  --radius-s: 0;                /* ZERO corner radius always */
+  --transition: .24s cubic-bezier(.4,.14,.2,1);
+
+  /* Layout */
+  --max-width: 1140px;
+  --content-max: 820px;
+  --content-inner: 680px;
+
+  /* Brutalist Shadows - THICKER */
+  --shadow-elev: 0 6px 0 #000;     /* Increased from 3px to 6px */
+  --shadow-heavy: 0 8px 0 #000;    /* Even chunkier option */
+
+  /* Tinted Backgrounds - SIMPLIFIED TO SINGLE COLOR */
+  --card-bg: #faf9ff;           /* Single purple tint for all boxes */
+  --muted-purple: #faf9ff;      /* Legacy support */
+  --muted-pink: #faf9ff;        /* Replaced with purple tint */
+  --muted-blue: #faf9ff;        /* Replaced with purple tint */
+  --muted-yellow: #faf9ff;      /* Replaced with purple tint */
+
+  /* Accent System */
+  --accent: #8B5CF6;
+  --accent-foreground: #ffffff;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+img, svg, video { max-width: 100%; height: auto; display: block; }
+a { color: var(--text); text-decoration: inherit; transition: color var(--transition), background var(--transition); }
+p { margin: 0 0 1.15rem; }
+
+/* LEGENDARY TYPOGRAPHY - MAXIMUM BOLD */
+h1, h2, h3, h4, h5 {
+  margin: 0 0 .75rem;
+  font-weight: 900;           /* Updated from 800 to 900 */
+  line-height: 1.15;
+  letter-spacing: -.5px;
+  color: var(--text);         /* Pure black */
+}
+
+/* Center H2 Headers by Default */
+h2 {
+  text-align: center;
+}
+
+/* Post Titles - ALL UPPERCASE */
+.post-full-title,
+.latest-item-title {
+  text-transform: uppercase !important;
+}
+
+.post-full-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  text-transform: uppercase !important;
+}
+
+/* Purple Vertical Bar on H3 Headers */
+h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-left: 5px solid var(--purple);    /* Thicker border */
+  padding-left: 1rem;
+  background: none;
+  font-weight: 900;                         /* Bold like other headers */
+  color: var(--text);
+  line-height: 1.55;
+}
+
+h3 .location-tag {
+  background: var(--lime);
+  color: #000;
+  padding: 2px 6px;
+  border: 3px solid #000;               /* Thicker border */
+  font-weight: 900;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 0 #000;             /* Add brutalist shadow */
+}
+
+/* Layout */
+.gh-viewport { min-height: 100vh; display: flex; flex-direction: column; }
+.site-main { flex: 1 0 auto; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+/* Hide skip link */
+.skip-link { display: none !important; }
+
+/* Header & Navigation */
+.site-header {
+  background: #fff;
+  border-bottom: 4px solid var(--lime-line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Primary Navigation Wrapper */
+.primary-nav-wrapper {
+  border-bottom: 2px solid #000;
+  overflow: visible;                        /* Ensure no clipping */
+}
+
+/* Secondary Navigation Sub-Bar */
+.secondary-nav-wrapper {
+  background: #fafafa;
+  border-bottom: 2px solid #000;
+  padding: 0.5rem 0;
+}
+
+.secondary-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.secondary-nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Hide mobile-only items on desktop */
+.mobile-only {
+  display: none;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 74px;
+  padding: 4px 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.main-nav {
+  justify-self: center;
+  display: flex;
+}
+
+.primary-nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-menu-toggle {
+  justify-self: end;
+}
+
+/* Secondary Navigation Wrapper - REMOVED */
+
+.logo { 
+  font-weight: 900; 
+  font-size: 1.55rem; 
+  letter-spacing: -1px; 
+  display: inline-flex; 
+  align-items: baseline; 
+  gap: .35rem; 
+  color: #000; 
+  text-decoration: none; 
+  font-family: var(--font); 
+}
+
+/* Navigation */
+.nav-list { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
+  align-items: center; 
+  gap: .45rem; 
+  flex-wrap: wrap; 
+}
+
+.nav-list a,
+.nav-list button {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--font) !important;
+  font-weight: 800;                      /* Lighter weight like share button */
+  font-size: .75rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: .58rem .75rem .55rem;
+  border: 3px solid #000;                /* Reduced 18% from 4px */
+  border-radius: 0;                      /* Zero corner radius */
+  background: #fff;
+  line-height: 1;
+  box-shadow: 0 3px 0 #000;              /* Reduced 18% from 4px */
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+  color: var(--text);
+}
+
+.nav-list a:hover,
+.nav-list a:focus,
+.nav-list button:hover,
+.nav-list button:focus {
+  background: var(--lime);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #000;              /* Reduced proportionally */
+}
+
+.nav-subscribe { background: var(--lime); }
+
+/* GUIDES button - lighter weight */
+.nav-guides {
+  font-weight: 800 !important;
+}
+
+/* Search button - ensure perfect styling match */
+.nav-search {
+  justify-content: center;
+  min-width: auto;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  border: 3px solid #000;                /* Match nav buttons */
+  background: var(--lime);
+  font-family: var(--font) !important;
+  font-weight: 800;                      /* Match nav weight */
+  font-size: 1rem;
+  padding: .55rem .85rem;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 3px 0 #000;              /* Match nav shadow */
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.mobile-menu-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #000;
+}
+
+/* BRUTALIST ARTICLE BOXES for Posts/Pages */
+.framed-article {
+  max-width: var(--content-max);
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.post-header-frame, .post-body-frame {
+  border: 2px solid #000;
+  box-shadow: 0 3px 0 #000;
+  background: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.post-header-frame {
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+}
+
+.post-body-frame {
+  padding: 2rem;
+  line-height: 1.7;
+}
+
+.post-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.post-meta {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* BRUTALIST Feature Image Frame */
+.post-feature-frame {
+  border: 2px solid #000;
+  box-shadow: 0 3px 0 #000;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.post-feature-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Homepage Main Content */
+.home-main { padding: 2rem; }
+
+/* IMPROVED Section Header with Better Spacing */
+.section-header { 
+  margin-bottom: 3rem; 
+  padding-top: 1.5rem;
+}
+
+.section-title { 
+  font-size: 1.5rem; 
+  font-weight: 900; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  margin-bottom: 1.5rem;
+}
+
+/* ALL UPPERCASE Content Tags for All Pages */
+.location-tag { 
+  background: var(--lime); 
+  color: #000; 
+  padding: 6px 12px; 
+  border: 2px solid #000; 
+  font-weight: 900; 
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.section-rule { 
+  height: 3px; 
+  background: #000; 
+  margin-top: 1.5rem; 
+}
+
+/* ========================================
+   LEGENDARY ARTICLE GRID - 2 COLUMNS
+   ======================================== */
+
+/* Desktop: 2-column grid | Mobile: Stack */
+.latest-list {
+  display: grid;
+  grid-template-columns: 1fr;              /* Mobile: single column */
+  gap: 2rem;                               /* Increased gap */
+}
+
+@media (min-width: 768px) {
+  .latest-list {
+    grid-template-columns: repeat(2, 1fr);  /* Desktop: 2 columns */
+    gap: 2rem;
+  }
+}
+
+.latest-item {
+  border: 4px solid #000;                   /* Thicker border */
+  border-left: 6px solid #000;              /* Black left outline visible by default */
+  box-shadow: var(--shadow-elev);          /* Using thicker shadow variable */
+  padding: 0;
+  transition: transform var(--transition), box-shadow var(--transition), opacity 0.6s ease, border-left 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  overflow: hidden;                         /* Contain featured ribbon */
+}
+
+/* Article visible state */
+.latest-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LEGENDARY ALTERNATING COLORS - Beehiiv Inspired */
+.latest-item:nth-child(4n+1) {
+  background: var(--muted-pink);           /* Hot pink tint */
+}
+
+.latest-item:nth-child(4n+2) {
+  background: var(--muted-blue);           /* Sky blue tint */
+}
+
+.latest-item:nth-child(4n+3) {
+  background: var(--muted-yellow);         /* Sunshine yellow tint */
+}
+
+.latest-item:nth-child(4n) {
+  background: var(--muted-purple);         /* Purple tint */
+}
+
+/* ENHANCED Hover Effect - Chunkier + Color Border Flash */
+.latest-item:hover {
+  transform: translateY(-4px);              /* Bigger lift */
+  box-shadow: 0 10px 0 #000;               /* Chunkier shadow */
+}
+
+/* Colored Left Border Flash on Hover */
+.latest-item:nth-child(4n+1):hover {
+  border-left-color: var(--hot-pink);
+}
+
+.latest-item:nth-child(4n+2):hover {
+  border-left-color: var(--sky-blue);
+}
+
+.latest-item:nth-child(4n+3):hover {
+  border-left-color: var(--sunshine-yellow);
+}
+
+.latest-item:nth-child(4n):hover {
+  border-left-color: var(--purple);
+}
+
+/* Featured Post Ribbon - Holiday Guides Ready! */
+.latest-item.featured::before {
+  content: 'FEATURED';
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  background: var(--hot-pink);
+  color: #000;
+  padding: 8px 45px;
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  z-index: 10;
+}
+
+/* Make entire article clickable */
+.latest-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.latest-item-content {
+  pointer-events: none; /* Prevent nested clicks */
+}
+
+.latest-item-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1rem; 
+}
+
+/* Purple Content Tags - ALL UPPERCASE */
+.latest-item-tag {
+  background: var(--purple);
+  color: #ffffff;
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid #000;
+  box-shadow: 0 2px 0 #000;
+  display: inline-block;
+}
+
+/* Tag Color Variants - Rotating Colors for Different Sections */
+.latest-item-tag.tag-eats {
+  background: var(--hot-pink);
+  color: #fff;                           /* White font for readability */
+}
+
+.latest-item-tag.tag-events {
+  background: var(--sky-blue);
+  color: #fff;                           /* White font for darker blue */
+}
+
+.latest-item-tag.tag-guides {
+  background: var(--hot-pink);
+  color: #fff;
+}
+
+.latest-item-tag.tag-community {
+  background: var(--lime);
+  color: #000;
+}
+
+.latest-item-tag.tag-curators {
+  background: var(--purple);
+  color: #fff;
+}
+
+.latest-item-tag.tag-newsletters {
+  background: var(--lime);
+  color: #000;
+}
+
+.latest-item-date {
+  font-size: 0.75rem;                 /* Slightly larger */
+  font-weight: 700;                   /* Bolder */
+  color: var(--text);                 /* Pure black for prominence */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* GREEN BOX AROUND TITLE (Uppercase) */
+.latest-item-title {
+  background: var(--lime);
+  border: 4px solid #000;                /* Thicker border */
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  box-shadow: 0 4px 0 #000;              /* Add shadow */
+}
+
+.latest-item-title a,
+.latest-item-title span {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 900;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+/* MORE → Link in Bottom Right */
+.latest-item-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
+
+.more-link {
+  background: var(--purple);             /* Purple background */
+  color: #fff !important;
+  padding: 0.5rem 1rem;
+  border: 3px solid #000;                /* Thicker border */
+  box-shadow: 0 4px 0 #000;              /* Thicker shadow */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.more-link:hover {
+  transform: translateY(-3px);           /* Bigger lift */
+  box-shadow: 0 7px 0 #000;              /* Chunkier shadow */
+}
+
+.post-more-link {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+.post-more-link .more-link {
+  background: var(--purple);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #000;
+  border-radius: 0;                      /* Zero corner radius */
+  box-shadow: 0 2px 0 #000;
+  text-decoration: none;
+  transition: transform var(--transition);
+}
+
+.post-more-link .more-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #000;
+}
+
+.latest-item-excerpt {
+  font-size: 0.9rem;                  /* Slightly larger */
+  font-weight: 600;                   /* Heavier weight for readability */
+  color: var(--text);                 /* Pure black instead of soft */
+  line-height: 1.6;                   /* Better line spacing */
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* Read Time Badge */
+.read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;                           /* White font */
+  padding: 4px 8px;
+  border: 2px solid #000;
+  background: var(--purple);             /* Purple background */
+  box-shadow: 0 2px 0 #000;
+}
+
+/* REMOVED: More link is no longer needed since entire box is clickable */
+
+/* BRUTALIST Media Cards with Zero Corner Radius */
+.media-card,
+.kg-card,
+.kg-embed-card,
+.kg-image-card,
+.kg-video-card {
+  border: 2px solid #000 !important;
+  box-shadow: 0 3px 0 #000 !important;
+  background: #fff !important;
+  overflow: hidden !important;
+  margin: 2rem 0 !important;
+  border-radius: 0 !important; /* Zero corner radius */
+}
+
+.media-card img,
+.kg-card img,
+.kg-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0 !important; /* Zero corner radius */
+}
+
+/* YouTube, Twitter, and HTML Embeds - Proper Default Sizes */
+.kg-embed-card iframe,
+.kg-embed-card blockquote,
+.kg-embed-card div {
+  max-width: 100% !important;
+  min-height: 400px !important; /* Proper height instead of thumbnail */
+  margin: 0 auto !important;
+  border: none !important;
+}
+
+/* Media Card Captions - Better Indentation and Font Size */
+.kg-card figcaption,
+.kg-image-card figcaption,
+.kg-embed-card figcaption,
+figcaption {
+  font-size: 0.7rem !important;
+  color: var(--text-soft);
+  text-align: left;
+  padding: 0.75rem 1.25rem 0.5rem !important; /* Better indentation */
+  margin: 0;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* Mobile caption adjustments */
+@media (max-width: 768px) {
+  .kg-card figcaption,
+  .kg-image-card figcaption,
+  .kg-embed-card figcaption,
+  figcaption {
+    font-size: 0.65rem !important; /* Smaller on mobile */
+    padding: 0.5rem 1rem !important;
+    line-height: 1.3;
+  }
+}
+
+/* Twitter embeds */
+.twitter-tweet,
+blockquote.twitter-tweet {
+  margin: 2rem auto !important;
+  max-width: 550px !important;
+  min-height: 250px !important;
+  border: 2px solid #000 !important;
+  box-shadow: 0 3px 0 #000 !important;
+  background: #fff !important;
+  padding: 1rem !important;
+  border-radius: 0 !important;
+}
+
+/* YouTube embeds */
+.kg-embed-card iframe[src*="youtube"],
+.kg-embed-card iframe[src*="youtu.be"] {
+  aspect-ratio: 16/9 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 315px !important;
+}
+
+/* Lime Green Highlight (Default) */
+mark, ::selection {
+  background: var(--lime) !important;
+  color: #000 !important;
+  padding: 0 2px;
+}
+
+.highlight {
+  background: var(--lime);
+  color: #000;
+  padding: 2px 4px;
+  font-weight: 600;
+}
+
+/* CUSTOM BRUTALIST PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  align-items: center;
+}
+
+/* Hide default Ghost pagination */
+.gh-pagination { display: none !important; }
+
+/* CUSTOM Hot Pink/Ocean Blue Pagination - Old Beehiiv Vibes */
+.pagination-prev {
+  background: var(--purple);            /* Purple for BACK button */
+  color: #fff;                          /* White text */
+  border: 2px solid #000;
+  box-shadow: 0 3px 0 #000;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform var(--transition);
+}
+
+.pagination-next {
+  background: var(--hot-pink);
+  color: #fff;                          /* White text */
+  border: 2px solid #000;
+  box-shadow: 0 3px 0 #000;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform var(--transition);
+}
+
+.pagination-prev:hover,
+.pagination-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #000;
+}
+
+/* Current Page Number */
+.pagination-location {
+  font-weight: 800;
+  font-size: 1rem;
+  background: var(--lime);
+  color: #000;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #000;
+  box-shadow: 0 3px 0 #000;
+}
+
+/* REQUIRED: Ghost Koenig width classes */
+.kg-width-wide { 
+  max-width: min(1100px, 100%); 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.kg-width-full { 
+  width: 100vw; 
+  max-width: 100vw; 
+  margin-left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.kg-width-wide img, .kg-width-full img { 
+  width: 100%; 
+  height: auto; 
+  display: block; 
+}
+
+/* FIXED CENTERED FOOTER with Visible Green CURATIONS Box */
+.site-footer { 
+  background: #111; 
+  color: #eee; 
+  margin-top: 4rem; 
+  padding: 3rem 0; 
+  text-align: center;
+}
+
+.footer-nav { 
+  list-style: none; 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 1.5rem; 
+  margin: 0 0 2rem 0; 
+  padding: 0;
+  justify-content: center;
+}
+
+.footer-nav a { 
+  color: var(--lime); 
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* VISIBLE Green Box around CURATIONS */
+.curations-footer-link {
+  display: inline-block;
+  background: var(--lime) !important;
+  color: #000 !important;
+  padding: 1rem 2rem !important;
+  border: 2px solid #000 !important;
+  box-shadow: 0 3px 0 #000 !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin: 1rem 0.5rem !important;
+  font-size: 1.1rem !important;
+  text-decoration: none !important;
+  transition: transform var(--transition);
+}
+
+.curations-footer-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #000 !important;
+}
+
+.universal-footer-tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.universal-footer-tagline p {
+  margin: 0;
+  color: #ccc;
+}
+
+/* No CSS needed for mobile-only - items now in single nav */
+
+/* Hide on scroll functionality for navigation */
+.site-header {
+  transition: transform 0.3s ease;
+}
+
+.site-header.hide-on-scroll {
+  transform: translateY(-100%);
+}
+
+/* Don't hide header on mobile - prevents hamburger menu from disappearing */
+@media (max-width: 900px) {
+  .site-header.hide-on-scroll {
+    transform: none;                       /* Disable hide on mobile */
+  }
+}
+
+/* Read Progress Bar */
+.read-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: var(--lime);
+  border-bottom: 2px solid #000;
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Share Button Section */
+.post-share-section {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.share-button {
+  background: var(--lime);
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 0;                      /* Zero corner radius */
+  box-shadow: 0 3px 0 #000;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font) !important;
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.share-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #000;
+}
+
+.share-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #000;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: var(--lime);
+  color: #000;
+  padding: 1rem 1.5rem;
+  border: 2px solid #000;
+  box-shadow: 0 4px 0 #000;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================
+   GHOST BUTTONS - Brutalist Style with Color Control
+   Allow Ghost editor color customization
+   ======================================== */
+
+/* All button types - brutalist base styling */
+.post-content .kg-btn,
+.page-content .kg-btn,
+.post-content button:not([class*="nav-"]):not([class*="share-"]),
+.page-content button:not([class*="nav-"]):not([class*="share-"]),
+.post-content a.button,
+.page-content a.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-align: center;
+  border: 3px solid #000;
+  border-radius: 0;                         /* Zero corner radius - brutalist */
+  box-shadow: 0 4px 0 #000;                 /* Brutalist shadow */
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  /* Allow Ghost to control colors - no background override here */
+  /* Ghost will apply background colors via inline styles or .kg-btn-accent */
+}
+
+/* Default button color if no Ghost color specified */
+.post-content .kg-btn:not([style*="background"]),
+.page-content .kg-btn:not([style*="background"]),
+.post-content button:not([style*="background"]):not([class*="nav-"]):not([class*="share-"]),
+.page-content button:not([style*="background"]):not([class*="nav-"]):not([class*="share-"]) {
+  background: var(--hot-pink);              /* Default hot pink */
+  color: #fff;
+}
+
+/* Ghost accent button variant */
+.kg-btn-accent {
+  background: var(--lime);                  /* Lime green for accent */
+  color: #000;
+}
+
+/* Button hover effects - brutalist lift */
+.post-content .kg-btn:hover,
+.page-content .kg-btn:hover,
+.post-content button:not([class*="nav-"]):not([class*="share-"]):hover,
+.page-content button:not([class*="nav-"]):not([class*="share-"]):hover,
+.post-content a.button:hover,
+.page-content a.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #000;                 /* Bigger shadow on hover */
+}
+
+/* Button active state */
+.post-content .kg-btn:active,
+.page-content .kg-btn:active,
+.post-content button:not([class*="nav-"]):not([class*="share-"]):active,
+.page-content button:not([class*="nav-"]):not([class*="share-"]):active,
+.post-content a.button:active,
+.page-content a.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #000;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  background: var(--lime);
+  border: 3px solid #000;
+  box-shadow: 0 4px 0 #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+  font-family: var(--font);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #000;
+}
+
+.scroll-to-top:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 0 #000;
+}
+
+.scroll-to-top-arrow {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #000;
+}
+
+.scroll-to-top-percent {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Mobile scroll to top adjustment */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .scroll-to-top-arrow {
+    font-size: 1.3rem;
+  }
+
+  .scroll-to-top-percent {
+    font-size: 0.6rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  /* Fix header grid for mobile */
+  .header-inner {
+    display: flex;                           /* Change from grid to flex */
+    justify-content: space-between;          /* Logo left, hamburger right */
+    align-items: center;
+    padding: 1rem 1.5rem;                    /* Better mobile padding */
+    min-height: 74px;
+  }
+
+  /* Logo stays on left */
+  .logo {
+    justify-self: auto;
+    flex-shrink: 0;
+  }
+
+  /* Hide desktop nav on mobile unless opened */
+  .main-nav:not(.open) {
+    display: none !important;               /* Force hide with !important */
+  }
+
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Hide secondary nav on mobile - items will be in hamburger menu */
+  .secondary-nav-wrapper {
+    display: none !important;               /* Force hide to prevent any leakage */
+  }
+
+  /* Ensure header doesn't clip or overflow */
+  .header-inner {
+    overflow: visible;
+    flex-wrap: nowrap;                      /* Prevent wrapping */
+  }
+
+  /* Show mobile-only items in hamburger menu */
+  .mobile-only {
+    display: list-item;
+  }
+
+  /* Primary Nav Mobile - Shown when open */
+  .primary-nav {
+    position: fixed;                       /* Fixed to viewport, not header */
+    top: 74px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 3px solid #000;
+    transform: translateY(-100%);
+    transition: transform var(--transition);
+    z-index: 999;                          /* Higher z-index to stay above everything */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1); /* Lighter shadow */
+    display: block !important; /* Override desktop hiding */
+  }
+  .primary-nav.open {
+    transform: translateY(0);
+    display: block !important;
+  }
+
+  /* Mobile Nav Lists */
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem .9rem 1.4rem;
+    gap: .65rem;
+  }
+
+  .primary-nav-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-list a,
+  .nav-list button {
+    width: 100%;
+    justify-content: flex-start;
+    font-family: var(--font) !important;
+    font-weight: 800;                      /* Match desktop weight */
+    font-size: .78rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    padding: .58rem .82rem .55rem;
+    border: 3px solid #000;                /* Match desktop thickness */
+    background: #fff;
+    line-height: 1;
+    box-shadow: 0 3px 0 #000;              /* Match desktop shadow */
+    transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+  }
+
+  /* Search button inherits all nav button styles automatically */
+  .nav-search {
+    justify-content: flex-start;
+  }
+
+  .container { padding: 0 1rem; }
+  .home-main { padding: 1rem; }
+  .header-inner { padding: 4px 1rem; }
+  
+  /* Adjust main content for mobile to prevent clipping */
+  .site-main {
+    padding-top: 0.5rem;
+  }
+
+  .nav-search:hover,
+  .nav-list a:hover {
+    background: var(--lime);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 0 #000;
+  }
+  
+  /* Mobile article frames */
+  .framed-article { padding: 0 1rem; }
+  .post-header-frame, .post-body-frame { padding: 1.5rem; }
+  
+  /* Mobile pagination */
+  .pagination {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Mobile footer */
+  .universal-footer-tagline {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .curations-footer-link {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Mobile media cards */
+  .kg-embed-card iframe {
+    min-height: 200px !important;
+  }
+}
+
+@media (max-width: 900px) { 
+  .kg-width-full, .kg-width-wide { 
+    width: 100%; 
+    max-width: 100%; 
+    margin-left: 0; 
+    transform: none; 
+  } 
+}
+
+/* Purple Links for Content */
+.post-content a,
+.page-content a,
+.newsletter-article a {
+  text-decoration: underline !important;
+  text-decoration-color: var(--purple) !important;
+}
+
+/* Mobile-specific purple hyperlink reinforcement */
+@media (max-width: 768px) {
+  .post-content a,
+  .page-content a,
+  .newsletter-article a {
+    text-decoration: underline !important;
+    text-decoration-color: var(--purple) !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 2px !important;
+  }
+}
+
+/* Exclude homepage and clickable article links from underlines */
+.latest-item a,
+.latest-item-link {
+  text-decoration: none !important;
+}
+
+/* ========================================
+   EMOJI STYLING - System emojis only
+   ======================================== */
+
+/* Make emojis larger and consistent */
+.section-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ========================================
+   BRUTALIST CONTENT STYLING
+   Newsletter/Post enhancements using all colors
+   ======================================== */
+
+/* Body Text - Lighter Weight for Long-Form Readability */
+.post-content p,
+.page-content p {
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+/* Quote Blocks - Hot Pink with Green Quote */
+.post-content blockquote,
+.page-content blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 4rem;   /* Increased left padding to 4rem to prevent quote bleed */
+  border: 4px solid #000;
+  background: var(--hot-pink);          /* Hot pink background */
+  color: #fff;                          /* White font */
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  box-shadow: 6px 6px 0 #000;
+  position: relative;
+}
+
+.post-content blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;                        /* Moved slightly right for better positioning */
+  color: var(--lime);                   /* Green quote mark */
+  opacity: 1;
+}
+
+/* Section Dividers (HR) - Minimal Black Line */
+.post-content hr,
+.page-content hr {
+  border: none;
+  height: 2px;                           /* Reduced from 3px */
+  background: #000;
+  margin: 1.5rem 0;                      /* Reduced from 3rem for minimal spacing */
+  box-shadow: none;
+}
+
+/* Calendar Items - Special List Styling */
+.post-content ul.calendar-list,
+.page-content ul.calendar-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.post-content ul.calendar-list li,
+.page-content ul.calendar-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.1rem;                 /* Reduced 25% from 1.5rem */
+  padding: 1rem;
+  border: 4px solid #000;
+  background: #F8F8F8;                   /* Seasalt background */
+  box-shadow: 4px 4px 0 #000;
+}
+
+.post-content ul.calendar-list li::before,
+.page-content ul.calendar-list li::before {
+  content: '📅';
+  font-size: 2rem;
+  flex-shrink: 0;
+  display: block;
+}
+
+.post-content ul.calendar-list li strong:first-of-type,
+.page-content ul.calendar-list li strong:first-of-type {
+  display: inline-block;
+  background: var(--sunshine-yellow);
+  border: 2px solid #000;
+  padding: 4px 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  box-shadow: 2px 2px 0 #000;
+  margin-right: 0.5rem;
+}
+
+/* Event Cards - Brutalist Bordered Cards */
+.event-card {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 4px solid #000;
+  background: var(--bg);
+  box-shadow: 8px 8px 0 #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 #000;
+}
+
+.event-card-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  color: #000;
+  border-bottom: 4px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+.event-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.event-card-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 6px 12px;
+  background: var(--lime);
+  border: 2px solid #000;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.event-card-meta-item:nth-child(2) {
+  background: var(--sky-blue);
+}
+
+.event-card-meta-item:nth-child(3) {
+  background: var(--sunshine-yellow);
+}
+
+.event-card-meta-item:nth-child(4) {
+  background: var(--hot-pink);
+}
+
+.event-card-description {
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+/* Image Captions - Purple Brutalist Boxes */
+.post-content figure,
+.page-content figure {
+  margin: 2rem 0;
+}
+
+.post-content figcaption,
+.page-content figcaption {
+  margin-top: -3px;
+  padding: 1rem 1.5rem;
+  border: 3px solid #000;
+  border-top: none;
+  background: var(--hot-pink);           /* Hot pink background */
+  font-weight: 700;                      /* Reduced weight for platform */
+  font-size: 0.95rem;                    /* Reduced size for platform */
+  font-style: normal;                    /* Normal, no italics */
+  line-height: 1.5;
+  color: #fff;
+  box-shadow: 0 3px 0 #000;
+}
+
+.post-content figcaption a,
+.page-content figcaption a {
+  color: #fff;
+  text-decoration: none;                 /* Remove underline for cleaner look */
+  font-weight: 800;                      /* Reduced from 900 */
+  font-size: 1rem;                       /* Slightly bigger than caption text */
+  transition: opacity 0.2s ease;
+}
+
+.post-content figcaption a:hover,
+.page-content figcaption a:hover {
+  opacity: 0.85;                         /* Subtle hover effect */
+}
+
+.post-content figure img,
+.page-content figure img {
+  border: 3px solid #000;
+  border-bottom: none;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Media Embeds - YouTube/GIF Frames */
+.post-content iframe,
+.page-content iframe {
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+}
+
+.kg-embed-card {
+  margin: 2rem 0;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  background: #000;
+}
+
+.kg-embed-card iframe {
+  display: block;
+  border: none;
+}
+
+/* Callout Boxes - Highlight Important Info */
+.callout-box {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 4px solid #000;
+  background: var(--lime);
+  box-shadow: 6px 6px 0 #000;
+  position: relative;
+}
+
+.callout-box::before {
+  content: '💡';
+  font-size: 2.5rem;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background: var(--bg);
+  padding: 0 10px;
+  border: 4px solid #000;
+}
+
+.callout-box-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  color: #000;
+}
+
+/* Color Variants for Callout Boxes */
+.callout-box.pink {
+  background: var(--hot-pink);
+}
+
+.callout-box.blue {
+  background: var(--sky-blue);
+}
+
+.callout-box.yellow {
+  background: var(--sunshine-yellow);
+}
+
+.callout-box.purple {
+  background: var(--purple);
+  color: #fff;
+}
+
+/* Strong/Bold Text - No Auto Highlight */
+.post-content strong,
+.page-content strong {
+  font-weight: 700;
+  /* No automatic background - cleaner for long reads */
+}
+
+/* Manual Highlight Classes - Default is Lime */
+.highlight,
+.highlight-lime {
+  background: var(--lime);               /* Default highlight = lime green */
+  padding: 2px 6px;
+}
+
+.highlight-cream {
+  background: var(--bg);
+  padding: 2px 6px;
+}
+
+/* Headings in Post Content - Lighter for Readability */
+.post-content h2,
+.page-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #000;
+  color: #000;
+}
+
+.post-content h3,
+.page-content h3 {
+  font-size: 1.2rem;                     /* Reduced 20% from 1.5rem */
+  font-weight: 640;                      /* Reduced 20% from 800 */
+  text-transform: uppercase;
+  margin: 2.5rem 0 1rem 0;
+  padding-left: 1rem;                    /* No full padding */
+  border-left: 6px solid var(--purple);
+  background: transparent;               /* No background - allow partial highlights */
+  color: #000;
+}
+
+.post-content h4,
+.page-content h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 2rem 0 1rem 0;
+  color: #000;
+}
+
+/* Lists - Enhanced Styling */
+.post-content ul:not(.calendar-list),
+.page-content ul:not(.calendar-list) {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+
+.post-content ul:not(.calendar-list) li,
+.page-content ul:not(.calendar-list) li {
+  padding-left: 2rem;
+  margin-bottom: 0.56rem;                /* Reduced 25% from 0.75rem */
+  position: relative;
+  line-height: 1.6;
+}
+
+.post-content ul:not(.calendar-list) li::before,
+.page-content ul:not(.calendar-list) li::before {
+  content: '▪';
+  position: absolute;
+  left: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--purple);
+}
+
+/* ========================================
+   PULL QUOTES - Hot Pink Box Style
+   ======================================== */
+
+.pull-quote,
+.post-content .pull-quote,
+.page-content .pull-quote {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: left;
+  margin: 3rem auto;
+  padding: 2rem 2rem 2rem 5rem;         /* Increased left padding to 5rem to prevent quote bleed */
+  border: 4px solid #000;               /* Box border */
+  background: var(--hot-pink);          /* Hot pink background */
+  color: #fff;                          /* White font */
+  max-width: 800px;
+  font-style: italic;
+  box-shadow: 6px 6px 0 #000;
+  position: relative;
+}
+
+.pull-quote::before,
+.post-content .pull-quote::before,
+.page-content .pull-quote::before {
+  content: '"';
+  position: absolute;
+  top: 1.5rem;
+  left: 1.25rem;                        /* Adjusted positioning for better spacing */
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--lime);                   /* Green quote mark */
+  font-style: normal;
+}
+
+/* ========================================
+   NUMBERED LISTS - Step-by-Step with Colored Badges
+   ======================================== */
+
+.post-content ol.step-list,
+.page-content ol.step-list {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.post-content ol.step-list li,
+.page-content ol.step-list li {
+  counter-increment: step-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.1rem;                 /* Reduced 25% from 1.5rem */
+  padding: 1rem;
+  border: 2px solid #000;
+  background: #F8F8F8;                   /* Seasalt background */
+  box-shadow: 3px 3px 0 #000;
+}
+
+.post-content ol.step-list li::before,
+.page-content ol.step-list li::before {
+  content: counter(step-counter);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #000;
+  background: var(--hot-pink);
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* Rotating colors for numbered badges */
+.post-content ol.step-list li:nth-child(2)::before {
+  background: var(--sky-blue);
+}
+
+.post-content ol.step-list li:nth-child(3)::before {
+  background: var(--sunshine-yellow);
+}
+
+.post-content ol.step-list li:nth-child(4)::before {
+  background: var(--lime);
+}
+
+.post-content ol.step-list li:nth-child(5)::before {
+  background: var(--purple);
+  color: #fff;
+}
+
+/* Cycle repeats after 5 */
+.post-content ol.step-list li:nth-child(n+6)::before {
+  background: var(--hot-pink);
+}
+
+/* ========================================
+   WARNING / INFO BOXES - Icon Key System
+   ======================================== */
+
+.info-box {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  padding-left: 4rem;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  position: relative;
+  font-weight: 600;
+}
+
+.info-box::before {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* Pro Tip - Lime */
+.info-box.tip {
+  background: var(--lime);
+  color: #000;
+}
+
+.info-box.tip::before {
+  content: '💡';
+}
+
+/* Warning - Hot Pink */
+.info-box.warning {
+  background: var(--hot-pink);
+  color: #000;
+}
+
+.info-box.warning::before {
+  content: '⚠️';
+}
+
+/* Info - Sky Blue */
+.info-box.info {
+  background: var(--sky-blue);
+  color: #000;
+}
+
+.info-box.info::before {
+  content: 'ℹ️';
+}
+
+/* Must-Try - Sunshine Yellow */
+.info-box.must-try {
+  background: var(--sunshine-yellow);
+  color: #000;
+}
+
+.info-box.must-try::before {
+  content: '⭐';
+}
+
+/* Insider Secret - Purple */
+.info-box.secret {
+  background: var(--purple);
+  color: #fff;
+}
+
+.info-box.secret::before {
+  content: '🤫';
+}
+
+/* ========================================
+   DAY-OF-WEEK DATE BADGES - Color Coded
+   ======================================== */
+
+.date-monday { background: var(--hot-pink) !important; }
+.date-tuesday { background: var(--sky-blue) !important; }
+.date-wednesday { background: var(--sunshine-yellow) !important; }
+.date-thursday { background: var(--lime) !important; }
+.date-friday { background: var(--purple) !important; color: #fff !important; }
+.date-saturday { background: var(--hot-pink) !important; }
+.date-sunday { background: var(--sky-blue) !important; }
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .post-content blockquote,
+  .page-content blockquote {
+    padding: 1rem 1rem 1rem 3.5rem;     /* Maintain left padding for quote mark */
+    font-size: 1rem;
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  .post-content blockquote::before {
+    font-size: 3rem;                    /* Smaller quote mark on mobile */
+    left: 0.5rem;
+  }
+
+  .pull-quote {
+    font-size: 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 4rem; /* Maintain left padding for quote mark */
+  }
+
+  .pull-quote::before {
+    font-size: 3rem;                    /* Smaller quote mark on mobile */
+    left: 0.75rem;
+    top: 1rem;
+  }
+
+  /* Media caption sizing for mobile */
+  .post-content figcaption,
+  .page-content figcaption {
+    font-size: 0.7rem;                  /* Moderate reduction for mobile readability */
+    font-weight: 600;                   /* Lighter for better mobile readability */
+    padding: 0.5rem 0.75rem;            /* Reduced padding for smaller visual footprint */
+  }
+
+  .post-content figcaption a,
+  .page-content figcaption a {
+    font-size: 0.75rem;                 /* Proportional to caption size */
+    font-weight: 700;                   /* Lighter from 800 */
+  }
+
+  /* H3 sizing for mobile */
+  .post-content h3,
+  .page-content h3 {
+    font-size: 1rem;                    /* Reduced from 1.2rem desktop */
+    font-weight: 600;                   /* Lighter for mobile */
+  }
+
+  .post-content ol.step-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-box {
+    padding-left: 1rem;
+    padding-top: 3.5rem;
+  }
+
+  .info-box::before {
+    left: 50%;
+    top: 1rem;
+    transform: translateX(-50%);
+  }
+
+  .event-card {
+    padding: 1rem;
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  .event-card:hover {
+    transform: none;
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  .event-card-meta {
+    flex-direction: column;
+  }
+
+  .callout-box {
+    padding: 1rem;
+    box-shadow: 4px 4px 0 #000;
+  }
+}

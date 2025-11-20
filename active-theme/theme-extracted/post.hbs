@@ -1,0 +1,68 @@
+{{!< default}}
+
+<main class="site-main post-main">
+  {{#post}}
+  <article class="post-full framed-article {{post_class}}" data-post-id="{{id}}">
+    <header class="post-header-frame">
+      <h1 class="post-full-title">
+        {{#if title}}{{title}}{{else}}[untitled draft]{{/if}}
+      </h1>
+      <div class="post-full-meta">
+        <time datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="MMMM D, YYYY"}}</time>
+
+        {{#if primary_tag}}
+          {{#match primary_tag.slug "newsletters"}}<span class="latest-item-tag tag-newsletters">🤙 {{primary_tag.name}}</span>{{/match}}
+          {{#match primary_tag.slug "eats"}}<span class="latest-item-tag tag-eats">🍟 {{primary_tag.name}}</span>{{/match}}
+          {{#match primary_tag.slug "events"}}<span class="latest-item-tag tag-events">📆 {{primary_tag.name}}</span>{{/match}}
+          {{#match primary_tag.slug "guides"}}<span class="latest-item-tag tag-guides">🗺️ {{primary_tag.name}}</span>{{/match}}
+          {{#match primary_tag.slug "curators"}}<span class="latest-item-tag tag-curators">👋 {{primary_tag.name}}</span>{{/match}}
+          {{#match primary_tag.slug "community"}}<span class="latest-item-tag tag-community">🏘️ {{primary_tag.name}}</span>{{/match}}
+        {{/if}}
+
+        {{#if authors}}
+          {{#foreach authors}}
+            <span class="post-author">{{name}}</span>
+          {{/foreach}}
+        {{/if}}
+      </div>
+    </header>
+
+    {{#if feature_image}}
+      <figure class="post-feature-frame">
+        <img src="{{feature_image}}"
+             alt="{{title}}"
+             width="1200"
+             height="630"
+             fetchpriority="high"
+             decoding="async">
+      </figure>
+    {{/if}}
+
+    <div class="post-body-frame">
+      <div class="post-content" data-original="true">
+        {{content}}
+      </div>
+
+      {{#if @custom.widgets_on_posts}}
+        <div class="post-widgets-holder hidden"></div>
+      {{/if}}
+
+      <!-- Share Button -->
+      <div class="post-share-section">
+        <button class="share-button" onclick="shareArticle('{{title}}', '{{url absolute="true"}}')" aria-label="Share this article">
+          🤙 <span>Share with a friend</span>
+        </button>
+      </div>
+
+      <section class="post-comments" aria-label="Comments">
+        {{ghost_comments}}
+      </section>
+      
+      <!-- MORE → Link in bottom right -->
+      <div class="post-more-link">
+        <a href="{{@site.url}}" class="more-link">MORE →</a>
+      </div>
+    </div>
+  </article>
+  {{/post}}
+</main>
