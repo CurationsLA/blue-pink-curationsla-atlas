@@ -19,6 +19,13 @@
   /* Legacy Support */
   --pink: #ff79cb;              /* Alias for hot-pink */
 
+  /* New Brutalist Shadow Colors */
+  --color-hot-pink: #ff79cb;
+  --color-sky-blue: #7DD3FC;
+  --color-lime: #EBF99A;
+  --color-purple: #8B5CF6;
+  --color-black: #000;
+
   /* Text & Background */
   --text: #000000;              /* Pure black for maximum contrast */
   --text-soft: #444;
@@ -295,8 +302,8 @@ h3 .location-tag {
 }
 
 .post-header-frame, .post-body-frame {
-  border: 2px solid #000;
-  box-shadow: 0 3px 0 #000;
+  border: 4px solid var(--color-black);
+  box-shadow: 16px 16px 0 var(--color-sky-blue); /* Blue shadow for articles */
   background: #fff;
   margin-bottom: 1.5rem;
 }
@@ -394,11 +401,11 @@ h3 .location-tag {
 }
 
 .latest-item {
-  border: 4px solid #000;                   /* Thicker border */
+  border: 3px solid var(--color-black);     /* Updated to use CSS variable */
   border-left: 6px solid #000;              /* Black left outline visible by default */
-  box-shadow: var(--shadow-elev);          /* Using thicker shadow variable */
+  box-shadow: 8px 8px 0 var(--color-hot-pink); /* Pink brutalist shadow */
   padding: 0;
-  transition: transform var(--transition), box-shadow var(--transition), opacity 0.6s ease, border-left 0.2s ease;
+  transition: all 0.2s ease;                /* Smooth transitions */
   position: relative;
   cursor: pointer;
   opacity: 0;
@@ -431,8 +438,8 @@ h3 .location-tag {
 
 /* ENHANCED Hover Effect - Chunkier + Color Border Flash */
 .latest-item:hover {
-  transform: translateY(-4px);              /* Bigger lift */
-  box-shadow: 0 10px 0 #000;               /* Chunkier shadow */
+  transform: translate(-2px, -2px);         /* Lift effect */
+  box-shadow: 10px 10px 0 var(--color-hot-pink); /* Enhanced pink shadow on hover */
 }
 
 /* Colored Left Border Flash on Hover */
@@ -502,9 +509,10 @@ h3 .location-tag {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border: 2px solid #000;
-  box-shadow: 0 2px 0 #000;
+  border: 2px solid var(--color-black);
+  box-shadow: 2px 2px 0 var(--color-black); /* Subtle brutalist shadow */
   display: inline-block;
+  transition: all 0.2s ease;             /* Smooth transition */
 }
 
 /* Tag Color Variants - Rotating Colors for Different Sections */
@@ -536,6 +544,12 @@ h3 .location-tag {
 .latest-item-tag.tag-newsletters {
   background: var(--lime);
   color: #000;
+}
+
+/* Tag hover effect */
+.latest-item-tag:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-black);
 }
 
 .latest-item-date {
@@ -574,23 +588,23 @@ h3 .location-tag {
 }
 
 .more-link {
-  background: var(--purple);             /* Purple background */
+  background: var(--color-purple);       /* Purple background */
   color: #fff !important;
   padding: 0.5rem 1rem;
-  border: 3px solid #000;                /* Thicker border */
-  box-shadow: 0 4px 0 #000;              /* Thicker shadow */
+  border: 2px solid var(--color-black);  /* Black border */
+  box-shadow: 4px 4px 0 var(--color-black); /* Initial black shadow */
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 0.8rem;
   text-decoration: none;
   display: inline-block;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: all 0.2s ease;             /* Smooth transition */
 }
 
 .more-link:hover {
-  transform: translateY(-3px);           /* Bigger lift */
-  box-shadow: 0 7px 0 #000;              /* Chunkier shadow */
+  box-shadow: 4px 4px 0 var(--color-hot-pink); /* Pink shadow on hover */
+  transform: translate(2px, 2px);        /* Press effect */
 }
 
 .post-more-link {
@@ -1227,7 +1241,19 @@ mark, ::selection {
   
   /* Mobile article frames */
   .framed-article { padding: 0 1rem; }
-  .post-header-frame, .post-body-frame { padding: 1.5rem; }
+  .post-header-frame, .post-body-frame { 
+    padding: 1.5rem; 
+    box-shadow: 8px 8px 0 var(--color-sky-blue); /* Smaller blue shadow on mobile */
+  }
+  
+  /* Mobile card shadows */
+  .latest-item {
+    box-shadow: 6px 6px 0 var(--color-hot-pink); /* Smaller pink shadow on mobile */
+  }
+  
+  .latest-item:hover {
+    box-shadow: 8px 8px 0 var(--color-hot-pink); /* Smaller enhanced shadow on mobile */
+  }
   
   /* Mobile pagination */
   .pagination {
